@@ -5,7 +5,7 @@ class Book
 {
 
 
-    // TODO: Add properties as Private
+    // Add properties as Private
 
     private $title;
     private $availableCopies;
@@ -13,30 +13,51 @@ class Book
     public function __construct($title, $availableCopies)
     {
 
+        $this->title = $title;
 
-        // TODO: Initialize properties
-
+        $this->availableCopies = $availableCopies;
 
     }
 
 
-    // TODO: Add getTitle method
+    // Add getTitle method
+
+    function getTitle()
+    {
+
+        return $this->title;
+    }
 
 
+    // Add getAvailableCopies method
 
-    // TODO: Add getAvailableCopies method
-
-
-
-
-    // TODO: Add borrowBook method
-
+    function getAvailableCopies()
+    {
+        return $this->availableCopies;
+    }
 
 
+    // Add borrowBook method
 
-    // TODO: Add returnBook method
+    function borrowBook()
+    {
+
+        if ($this->availableCopies > 0) {
+            $this->availableCopies--;
+        } else {
+            echo "No copies available for '{$this->title}' to borrow.\n";
+        }
+
+    }
 
 
+    // Add returnBook method
+
+    function returnBook()
+    {
+
+        $this->availableCopies++;
+    }
 
 }
 
@@ -45,32 +66,58 @@ class Member
 {
 
 
-    // TODO: Add properties as Private
+    // Add properties as Private
 
+    private $name;
 
 
     public function __construct($name)
     {
 
-
-        // TODO: Initialize properties
-
+        $this->name = $name;
 
     }
 
 
 
-    // TODO: Add getName method
+    // Add getName method
+
+    function getName()
+    {
+        $this->name;
+    }
+
+    // Add borrowBook method
+
+    function borrowBook($book)
+    {
+        $book->borrowBook();
+        echo "{$this->name} borrowed '{$book->getTitle()}'.\n";
+    }
 
 
-
-    // TODO: Add borrowBook method
-
-
-
-
-    // TODO: Add returnBook method
-
+    // Add returnBook method
+    function returnBook($book)
+    {
+        $book->returnBook();
+        echo "{$this->name} returned '{$book->getTitle()}'.\n";
+    }
 
 
 }
+
+// book;
+
+$book1 = new Book("The Great Gatsby", 5);
+$book2 = new Book("To Kill a Mockingbird", 3);
+
+// members;
+
+$member1 = new Member("John Doe");
+$member2 = new Member("Jane Smith");
+
+$member1->borrowBook($book1);
+$member2->borrowBook($book2);
+
+echo "Available Copies of '{$book1->getTitle()}': " . $book1->getAvailableCopies() . "\n";
+echo "Available Copies of '{$book2->getTitle()}': " . $book2->getAvailableCopies() . "\n";
