@@ -4,9 +4,6 @@
 class Book
 {
 
-
-    // Add properties as Private
-
     private $title;
     private $availableCopies;
 
@@ -19,25 +16,16 @@ class Book
 
     }
 
-
-    // Add getTitle method
-
     function getTitle()
     {
 
         return $this->title;
     }
 
-
-    // Add getAvailableCopies method
-
     function getAvailableCopies()
     {
         return $this->availableCopies;
     }
-
-
-    // Add borrowBook method
 
     function borrowBook()
     {
@@ -49,9 +37,6 @@ class Book
         }
 
     }
-
-
-    // Add returnBook method
 
     function returnBook()
     {
@@ -65,9 +50,6 @@ class Book
 class Member
 {
 
-
-    // Add properties as Private
-
     private $name;
 
 
@@ -78,16 +60,10 @@ class Member
 
     }
 
-
-
-    // Add getName method
-
     function getName()
     {
         $this->name;
     }
-
-    // Add borrowBook method
 
     function borrowBook($book)
     {
@@ -95,8 +71,6 @@ class Member
         echo "{$this->name} borrowed '{$book->getTitle()}'.\n";
     }
 
-
-    // Add returnBook method
     function returnBook($book)
     {
         $book->returnBook();
@@ -106,12 +80,8 @@ class Member
 
 }
 
-// book;
-
 $book1 = new Book("The Great Gatsby", 5);
 $book2 = new Book("To Kill a Mockingbird", 3);
-
-// members;
 
 $member1 = new Member("John Doe");
 $member2 = new Member("Jane Smith");
